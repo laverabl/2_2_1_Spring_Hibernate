@@ -1,8 +1,12 @@
 package hiber.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
+
+@Component
 @Entity
 @Table(name = "cars")
 public class Car implements Serializable {

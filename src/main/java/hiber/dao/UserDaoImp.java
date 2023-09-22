@@ -13,8 +13,12 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
-   @Autowired
    private SessionFactory sessionFactory;
+
+   @Autowired
+   public UserDaoImp(SessionFactory sessionFactory) {
+      this.sessionFactory = sessionFactory;
+   }
 
    @Override
    public void add(User user) {
@@ -28,11 +32,11 @@ public class UserDaoImp implements UserDao {
    }
    @Override
    public User getUserByModel(String model, int series) {
-      String hql = "FROM Car WHERE model =:model AND series =:series";
-      Query<Car> query = sessionFactory.getCurrentSession().createQuery(hql, Car.class);
+      String hql = "FROM User u WHERE u.car.model=:model AND u.car.series=:series";
+      Query<User> query = sessionFactory.getCurrentSession().createQuery(hql, User.class);
       query.setParameter("model", model);
       query.setParameter("series", series);
-      return query.uniqueResult().getUser();
+      return query.uniqueResult();
    }
 
 }
