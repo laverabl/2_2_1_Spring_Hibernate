@@ -1,6 +1,5 @@
 package hiber.model;
 
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,7 +22,6 @@ public class User implements Serializable {
 
    public User() {
    }
-
 
 
    public User(String firstName, String lastName, String email) {
